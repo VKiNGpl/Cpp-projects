@@ -12,7 +12,7 @@ int main()
     cin >> PIN;
     cout << "\n";
 
-    if(PIN=="0719")
+    if(PIN=="1405")
     {
         cout<<"Poprawny PIN!";
     }
