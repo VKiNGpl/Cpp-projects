@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1563835124 source:c:\users\kryst\documents\github\cpp-projects\revision\main.cpp
+	<iostream>
+	<cstdlib>
+	<time.h>
+	<stdio.h>
+
