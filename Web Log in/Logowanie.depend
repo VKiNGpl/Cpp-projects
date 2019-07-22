@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1542602902 source:c:\users\kryst\documents\c++ projekty\logowanie\main.cpp
+	<iostream>
+
+<<<<<<< HEAD:Logowanie/Logowanie.depend
+1563647473 source:c:\users\dom\documents\github\cpp-projects\logowanie\main.cpp
+=======
+1563647519 source:c:\users\kryst\documents\github\cpp-projects\logowanie\main.cpp
+>>>>>>> test:Web Log in/Logowanie.depend
+	<iostream>
+
