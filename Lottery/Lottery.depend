@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1564095176 source:c:\users\kryst\documents\github\cpp-projects\lotto\lotto\main.cpp
+	<iostream>
+	<windows.h>
+	<time.h>
+
+1564095363 source:c:\users\kryst\documents\github\cpp-projects\lottery\main.cpp
+	<iostream>
+	<windows.h>
+	<time.h>
+
