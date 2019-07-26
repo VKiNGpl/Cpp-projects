@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1564181912 source:c:\users\kryst\documents\github\cpp-projects\the fibonacci sequence\main.cpp
+	<iostream>
+	<iomanip>
+
