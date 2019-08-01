@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1564523606 source:c:\users\kryst\documents\github\cpp-projects\pasja informatyki\5 question quiz\main.cpp
+1564616822 source:c:\users\kryst\documents\github\cpp-projects\pasja informatyki\5 question quiz\main.cpp
 	<iostream>
 	<fstream>
 	<cstdlib>

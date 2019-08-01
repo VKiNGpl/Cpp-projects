@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1564623742 source:c:\users\kryst\documents\github\cpp-projects\od zera do gier kodera\input\main.cpp
+	<iostream>
+	<string>
+	<conio.h>
+
