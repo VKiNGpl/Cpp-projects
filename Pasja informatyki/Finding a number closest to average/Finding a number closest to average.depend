@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1565219281 source:c:\users\kryst\documents\github\cpp-projects\pasja informatyki\finding a number closest to average\main.cpp
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+
