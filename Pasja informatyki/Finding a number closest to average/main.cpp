@@ -1,36 +1,72 @@
 #include <iostream>
 #include <conio.h>
-#include <stdlib.h>
+#include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
-float fLiczba1, fLiczba2, fLiczba3, fLiczba4, fLiczba5, fAverage;
-float fDifferance1, fDifferance2, fDifferance3, fDifferance4, fDifferance5, fDifToAv, fResult;
-
 int main()
 {
-    cout << "Podaj 5 liczb z przecinkiem rozdzielonych spacja: ";
-    cin >> fLiczba1 >> fLiczba2 >> fLiczba3 >> fLiczba4 >> fLiczba5;
+/*
+    float liczba[5];
+    float suma = 0;
+    float srednia;
+    float naj;
 
-    fAverage = (fLiczba1 + fLiczba2 + fLiczba3 +fLiczba4 + fLiczba5) / 5;
+    for (int i=0; i<=4 ; i++)
+    {
+        cout << "Podaj " << i+1 << " liczbe: ";
+        cin >> liczba[i];
+        suma += liczba[i];
+        srednia = suma / (i+1);
+    }
+    cout << "Srednia liczb to: " << srednia << endl;
+    naj = fabs(srednia-liczba[0]);
+    for (int i=0; i<=4; i++)
+    {
+        if (fabs(srednia - liczba[i])<fabs(naj))
+            naj = fabs(srednia-liczba[i]);
+    }
+    for (int i=0; i<=4; i++)
+    {
+        if (fabs(srednia - liczba[i]) == naj)
+            cout << "Liczba najblizsza sredniej to: " << liczba[i] << endl;
+    }
+*/
 
-    fDifferance1 = fAverage - fLiczba1;
-    fDifferance2 = fAverage - fLiczba2;
-    fDifferance3 = fAverage - fLiczba3;
-    fDifferance4 = fAverage - fLiczba4;
-    fDifferance5 = fAverage - fLiczba5;
+        float fLiczba1, fLiczba2, fLiczba3, fLiczba4, fLiczba5, fAverage;
+        float fDifferance1, fDifferance2, fDifferance3, fDifferance4, fDifferance5, fDifToAv, fResult;
 
-    fDifToAv = abs(fDifferance1), fResult = fLiczba1;
-    if (abs(fDifferance2) < fDifToAv) fDifToAv = fDifferance2, fResult = fLiczba2;
-    if (abs(fDifferance3) < fDifToAv) fDifToAv = fDifferance3, fResult = fLiczba3;
-    if (abs(fDifferance4) < fDifToAv) fDifToAv = fDifferance4, fResult = fLiczba4;
-    if (abs(fDifferance5) < fDifToAv) fDifToAv = fDifferance5, fResult = fLiczba5;
+        cout << "Podaj 5 liczb z przecinkiem rozdzielonych spacja: ";
+        cin >> fLiczba1 >> fLiczba2 >> fLiczba3 >> fLiczba4 >> fLiczba5;
 
-    cout << "Liczba o wartosci najbardziej zblizonej do sredniej z tych 5 liczb to: "
-         << fResult << endl;
-    cout << "Srednia to: " << fAverage << endl;
-    cout << "Roznice: " << fDifferance1 << " " << fDifferance2 << " " <<  fDifferance3 << " "
-         <<  fDifferance4 << " " <<  fDifferance5 << endl;
+        fAverage = (fLiczba1 + fLiczba2 + fLiczba3 +fLiczba4 + fLiczba5) / 5;
+
+        fDifferance1 = fAverage - fLiczba1;
+        fDifferance2 = fAverage - fLiczba2;
+        fDifferance3 = fAverage - fLiczba3;
+        fDifferance4 = fAverage - fLiczba4;
+        fDifferance5 = fAverage - fLiczba5;
+
+        fDifToAv = abs(fDifferance1), fResult = fLiczba1;
+        if (abs(fDifferance2) < fDifToAv) fDifToAv = fDifferance2, fResult = fLiczba2;
+        if (abs(fDifferance3) < fDifToAv) fDifToAv = fDifferance3, fResult = fLiczba3;
+        if (abs(fDifferance4) < fDifToAv) fDifToAv = fDifferance4, fResult = fLiczba4;
+        if (abs(fDifferance5) < fDifToAv) fDifToAv = fDifferance5, fResult = fLiczba5;
+
+        cout << "Srednia to: " << fAverage << endl;
+
+        cout << "Odchylenie od sredniej: " << fDifferance1 << " " << fDifferance2 << " " <<  fDifferance3 << " "
+             <<  fDifferance4 << " " <<  fDifferance5 << endl;
+
+        cout << "Liczba o wartosci najbardziej zblizonej do sredniej z tych 5 liczb to: " << fResult;
+
+        if (fDifToAv == abs(fDifferance1) && (fResult != fLiczba1)) cout << " oraz " << fLiczba1;
+        if (fDifToAv == abs(fDifferance2) && (fResult != fLiczba2)) cout << " oraz " << fLiczba2;
+        if (fDifToAv == abs(fDifferance3) && (fResult != fLiczba3)) cout << " oraz " << fLiczba3;
+        if (fDifToAv == abs(fDifferance4) && (fResult != fLiczba4)) cout << " oraz " << fLiczba4;
+        if (fDifToAv == abs(fDifferance5) && (fResult != fLiczba5)) cout << " oraz " << fLiczba5;
+        cout << endl;
 
     getch();
     return 0;
