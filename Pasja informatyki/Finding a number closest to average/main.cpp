@@ -7,6 +7,50 @@ using namespace std;
 
 int main()
 {
+
+        float fDifferance[4];
+        float fLiczba1, fLiczba2, fLiczba3, fLiczba4, fLiczba5, fAverage, fDifToAv, fResult, fSum;
+
+        cout << "Podaj 5 liczb z przecinkiem rozdzielonych spacja: ";
+        cin >> fLiczba1 >> fLiczba2 >> fLiczba3 >> fLiczba4 >> fLiczba5;
+
+        float fLiczba[5] = {fLiczba1, fLiczba2, fLiczba3, fLiczba4, fLiczba5};
+
+        for (int i=0; i<=4; i++)
+        {
+            fSum += fLiczba[i];
+            cout << fLiczba[i] << endl;
+        }
+        fAverage = fSum / 5;
+
+        for (int i=0; i<=4; i++)
+        {
+            fDifferance[i] = fAverage - fLiczba[i];
+        }
+
+        fDifToAv = abs(fDifferance[0]), fResult = fLiczba[0];
+
+        for (int i=1; i<=4; i++)
+        {
+        if (abs(fDifferance[i]) < fDifToAv) fDifToAv = fDifferance[i], fResult = fLiczba[i];
+        }
+
+        cout << "Srednia to: " << fAverage << endl;
+
+        cout << "Odchylenie od sredniej: ";
+            for (int i=0; i<=0; i++)
+            {
+                cout << fDifferance[i];
+            }
+
+        cout << "\nLiczba o wartosci najbardziej zblizonej do sredniej z tych 5 liczb to: " << fResult;
+
+        for (int i=0; i<=4; i++)
+        {
+        if (fDifToAv == abs(fDifferance[i]) && (fResult != fLiczba[i])) cout << " oraz " << fLiczba[i];
+        }
+        cout << endl;
+
 /*
     float liczba[5];
     float suma = 0;
@@ -33,7 +77,7 @@ int main()
             cout << "Liczba najblizsza sredniej to: " << liczba[i] << endl;
     }
 */
-
+/*
         float fLiczba1, fLiczba2, fLiczba3, fLiczba4, fLiczba5, fAverage;
         float fDifferance1, fDifferance2, fDifferance3, fDifferance4, fDifferance5, fDifToAv, fResult;
 
@@ -67,7 +111,7 @@ int main()
         if (fDifToAv == abs(fDifferance4) && (fResult != fLiczba4)) cout << " oraz " << fLiczba4;
         if (fDifToAv == abs(fDifferance5) && (fResult != fLiczba5)) cout << " oraz " << fLiczba5;
         cout << endl;
-
+*/
     getch();
     return 0;
 }
