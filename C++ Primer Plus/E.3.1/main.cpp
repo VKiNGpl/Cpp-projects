@@ -9,7 +9,7 @@ int main()
 {
     int nInches;
 
-    cout << "Enter your height in inches: "; cin >> nInches;
+    cout << "Enter your height in inches:__\b\b"; cin >> nInches;
     cout << "\nThat is " << toFeet(nInches) << " feet and " << nInches % 12<< " inches!\n";
     return 0;
 }
