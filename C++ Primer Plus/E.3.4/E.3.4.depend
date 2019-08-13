@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1565414821 source:c:\users\kryst\documents\github\cpp-projects\c++ primer plus\e.3.4\main.cpp
+	<iostream>
+	<conio.h>
+
