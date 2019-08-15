@@ -1,6 +1,4 @@
 # depslib dependency file v1.0
-1565128524 source:c:\users\kryst\documents\github\cpp-projects\revision\main.cpp
+1565842900 source:c:\users\kryst\documents\github\cpp-projects\revision\main.cpp
 	<iostream>
-	<time.h>
-	<cstdlib>
 

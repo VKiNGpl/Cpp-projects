@@ -2,32 +2,26 @@
 
 using namespace std;
 
-float srednia(float *tab, int ile)
-{
-    float suma=0;
-    for (int i=0; i<ile; i++)
-    {
-        suma+=*tab;
-        *tab=999;
-        tab++;
-    }
-    return suma/ile;
-}
-
 int main()
 {
+string word = "blablabla";
+int length = word.length();
+    string sPalindrom;
+string *tablica;
+tablica = new string [length];
+            for (int i=length-1; i>=0; i--)
+            {
+            cout << word[i];
+            tablica[i] = word[i];
+            }
+            cout << endl;
 
-    float tablica[3];
-    tablica[0] = 1.5;
-    tablica[1] = 2.3;
-    tablica[2] = 0.75;
-
-    cout<<"Srednia wynosi: "<<srednia(tablica, 3);
-
-    cout<<endl<<tablica[0];
-    cout<<endl<<tablica[1];
-    cout<<endl<<tablica[2];
-
+            for (int i=length-1; i>=0; i--)
+            {
+            cout << tablica[i];
+            }
+            string oo
+            cout << endl << tablica;
     return 0;
 }
 
