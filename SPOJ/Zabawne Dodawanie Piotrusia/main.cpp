@@ -1,44 +1,43 @@
-#include <sstream>
-#include <string>
 #include <iostream>
 
 using namespace std;
 
-string getPalindrom (string);
-
-int main() {
-
-    ostringstream ss;
-
-    int t;
-
-    cin >> t;
-    for (int i=0; i<t; i++)
-    {
-        string sLiczba, sPalindrom;
-        int nLiczba = 0;
-        int nIle = 1;
-        cin >> nLiczba;
-        ss << nLiczba;
-        sLiczba = ss.str();
-
-        if (sLiczba = getPalindrom(sLiczba))
-        {
-            cout << sLiczba << " " << nIle;
-        }
-      cout << sLiczba << endl;
-    }
-
-return 0;
-}
-
-string getPalindrom (word);
+int main()
 {
-    int length = word.length();
-    string sPalindrom;
-            for (int i=length-1; i>=0; i--)
+
+    int nLiczba, nKopia, nCyfra, nOdwr, nTestow;
+
+    cin >> nTestow;
+
+    for (int i=0; i<nTestow; i++)
+    {
+        cin >> nLiczba;
+        int nLicznik = 0;
+        nKopia = 0;
+
+        while (nKopia != nOdwr)
+        {
+
+            nOdwr = 0;
+            nKopia = nLiczba;
+            do
             {
-            sPalindrom[i] = word[i];
+                nCyfra = nLiczba % 10;
+                nOdwr = (nOdwr * 10) + nCyfra;
+                nLiczba = nLiczba / 10;
             }
-    cout << sPalindrom;
+            while (nLiczba != 0);
+
+            if (nKopia == nOdwr)
+            {
+                cout << nKopia << " " << nLicznik << endl;
+            }
+            else
+            {
+                nLiczba = nKopia + nOdwr;
+                nLicznik++;
+            }
+        }
+    }
+    return 0;
 }
