@@ -9,20 +9,19 @@ int main()
 
     while (nLicznik < 3)
     {
-
         cin >> nLiczba;
         while (nLiczba == 42)
         {
-            cout << nLiczba;
+            cout << nLiczba << endl;
             cin >> nLiczba;
         }
         cout << nLiczba << endl;
-        if (nLiczba == 42)
+        while(nLiczba != 42)
         {
-            nLicznik++;
-            cout << nLicznik;
+            cin >> nLiczba;
+            cout << nLiczba << endl;
         }
+        nLicznik++;
     }
-
     return 0;
 }

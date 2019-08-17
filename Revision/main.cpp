@@ -2,26 +2,24 @@
 
 using namespace std;
 
+
 int main()
 {
-string word = "blablabla";
-int length = word.length();
-    string sPalindrom;
-string *tablica;
-tablica = new string [length];
-            for (int i=length-1; i>=0; i--)
-            {
-            cout << word[i];
-            tablica[i] = word[i];
-            }
-            cout << endl;
+    int nLiczba;
+    cin >> nLiczba;
+    int nDzielnik = nLiczba;
 
-            for (int i=length-1; i>=0; i--)
-            {
-            cout << tablica[i];
-            }
-            string oo
-            cout << endl << tablica;
+    for (int i=nDzielnik-1; i>=0; i--)
+    {
+        cout << nDzielnik << endl;
+        cout << nLiczba%(nDzielnik) << endl;
+        if (nLiczba%nDzielnik == 0)
+        {
+        cout << "NIE" << endl;
+        }
+        nDzielnik--;
+    }
+    cout << "TAK" << endl;
+
     return 0;
 }
-
