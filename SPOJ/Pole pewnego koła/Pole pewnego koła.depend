@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1566760514 source:c:\users\kryst\documents\github\cpp-projects\spoj\pole pewnego ko³a\main.cpp
+	<iostream>
+	<cmath>
+	<iomanip>
+

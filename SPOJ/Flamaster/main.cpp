@@ -1,6 +1,4 @@
 #include <iostream>
-#include <sstream>
-#include <string>
 
 using namespace std;
 
@@ -13,38 +11,25 @@ int main()
     for(int i=0; i<nTestow; i++)
     {
         string sWyraz;
-        ostringstream str1;
         cin >> sWyraz;
 
         int nLength = sWyraz.length();
-        string sKopia[nLength];
 
         for(int j=0; j<nLength; j++)
         {
-            int nLicznik = 0;
-
-            if(sWyraz[j] == sWyraz[j-1])
+            int nLicznik = 1;
+            cout << sWyraz[j];
+            while(sWyraz[j+1] == sWyraz[j])
             {
-                for (int k=j; k<nLength-j; k++)
-                {
-                    if(sWyraz[k] == sWyraz[k-1])
-                    {
-                        nLicznik++;
-                        sWyraz.erase(k,0);
-                        str1 << nLicznik;
-                string sLiczba = str1.str();
-                cout <<sLiczba;
-                sWyraz[k] = sLiczba[0];
-                    }
-
-                }
-
+                nLicznik++;
+                j++;
+                if(sWyraz[j+1] != sWyraz[j] && nLicznik == 2)
+                    cout << sWyraz[j];
+                else if(sWyraz[j+1] != sWyraz[j])
+                    cout << nLicznik;
             }
-            sKopia[j] = sWyraz[j];
-            //cout << sWyraz[j] << endl;
         }
+        cout << endl;
     }
-
-
     return 0;
 }
