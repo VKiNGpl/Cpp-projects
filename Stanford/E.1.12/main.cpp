@@ -65,10 +65,11 @@ void PrintThousandToMillion(int num)
         cout << " thousand ";
         PrintHundredToThousand(num%1000);
     }
-            else if(num>=100000 && num<101100 && num%100!=0)
+            else if(num>100000 && num<1000000 && num%1000!=0)
             {
         PrintHundredToThousand(num/1000);
         cout << " thousand ";
+        PrintOneToThousand(num%1000);
             }
     else if(num>=100000 && num<1000000 && num%1000==0)
     {
