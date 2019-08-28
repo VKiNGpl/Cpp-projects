@@ -2,8 +2,6 @@
 
 using namespace std;
 
-
-int RevNum(int);
 void PrintNum(int);
 void PrintOneDigit(int);
 void PrintTeens(int);
@@ -45,9 +43,7 @@ void PrintThousandToMillion(int num)
     {
         PrintOneDigit(num/1000);
         cout << " thousand ";
-        PrintOneToHundred(num%1000);
     }
-
     else if (num>=1100 && num<10000 && num%1000!=0)
     {
         PrintOneDigit(num/1000);
@@ -65,12 +61,12 @@ void PrintThousandToMillion(int num)
         cout << " thousand ";
         PrintHundredToThousand(num%1000);
     }
-            else if(num>100000 && num<1000000 && num%1000!=0)
-            {
+    else if(num>100000 && num<1000000 && num%1000!=0)
+    {
         PrintHundredToThousand(num/1000);
         cout << " thousand ";
-        PrintOneToThousand(num%1000);
-            }
+        PrintHundredToThousand(num%1000);
+    }
     else if(num>=100000 && num<1000000 && num%1000==0)
     {
         PrintHundredToThousand(num/1000);
@@ -81,6 +77,10 @@ void PrintThousandToMillion(int num)
         PrintHundredToThousand(num/1000);
         cout << " thousand ";
         PrintHundredToThousand(num%1000);
+    }
+    if(num%1000!=0)
+    {
+        PrintOneToHundred(num%1000);
     }
 }
 
@@ -122,18 +122,6 @@ void PrintNum(int num)
         PrintHundredToThousand(num);
     if (num>=1000 && num<1000000)
         PrintThousandToMillion(num);
-}
-
-int RevNum(int n)
-{
-    int nRev =0;
-    while (n!=0)
-    {
-        nRev += n%10;
-        n /= 10;
-        nRev *= 10;
-    }
-    return nRev/10;
 }
 
 void PrintOneDigit(int d)
