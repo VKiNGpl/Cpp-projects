@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1567363973 source:c:\users\kryst\documents\github\cpp-projects\stanford\weekdayt\main.cpp
+	<iostream>
+	<string>
+
