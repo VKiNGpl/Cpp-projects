@@ -2,9 +2,9 @@
 
 using namespace std;
 
-const int X_MAX_SIZE = 7;
-const int Y_MAX_SIZE = 7;
-char chessBoard[Y_MAX_SIZE][X_MAX_SIZE+1] {'r','n','b','q','k','b','n','r'};
+const int X_MAX_SIZE = 8;
+const int Y_MAX_SIZE = 8;
+char chessBoard[Y_MAX_SIZE][X_MAX_SIZE] {'r','n','b','q','k','b','n','r'};
 
 void PrintXEdge();
 void PrintXLine();
@@ -23,13 +23,13 @@ int main()
     PrintXLine();
     PringMidLines();
     MirrorArray();
+    PrintMirrorLine(Y_MAX_SIZE-4);
+    PrintXLine();
     PrintMirrorLine(Y_MAX_SIZE-3);
     PrintXLine();
-    PrintMirrorLine(Y_MAX_SIZE-2);
+    PrintMirrorLine(Y_MAX_SIZE-2, 32);
     PrintXLine();
     PrintMirrorLine(Y_MAX_SIZE-1, 32);
-    PrintXLine();
-    PrintMirrorLine(Y_MAX_SIZE, 32);
     cout << "|" << endl;
     PrintXEdge();
 
@@ -37,7 +37,7 @@ int main()
 }
 void PrintXEdge()
 {
-    for (int i=0; i<=X_MAX_SIZE; i++)
+    for (int i=0; i<X_MAX_SIZE; i++)
     {
         cout << "----";
     }
@@ -46,7 +46,7 @@ void PrintXEdge()
 void PrintXLine()
 {
     cout << "|" << endl;
-    for (int i=0; i<=X_MAX_SIZE; i++)
+    for (int i=0; i<X_MAX_SIZE; i++)
     {
         cout << "|---";
     }
@@ -54,14 +54,14 @@ void PrintXLine()
 }
 void PrintFirstLine()
 {
-    for (int i=0; i<=X_MAX_SIZE; i++)
+    for (int i=0; i<X_MAX_SIZE; i++)
     {
         cout << "| " << chessBoard[0][i] << " ";
     }
 }
 void PrintSecondLine()
 {
-    for (int i=0; i<=X_MAX_SIZE; i++)
+    for (int i=0; i<X_MAX_SIZE; i++)
     {
         chessBoard[1][i] = 'p';
         cout << "| " << chessBoard[1][i] << " ";
@@ -71,7 +71,7 @@ void PringMidLines()
 {
     for (int i=2; i<4; i++)
     {
-        for (int j=0; j<=X_MAX_SIZE; j++)
+        for (int j=0; j<X_MAX_SIZE; j++)
         {
             chessBoard[i][j] = '-';
             cout << "| " << chessBoard[i][j] << " ";
@@ -81,21 +81,18 @@ void PringMidLines()
 }
 void MirrorArray()
 {
-    for (int i=0; i<Y_MAX_SIZE/2+0.5; i++)           // Mirror copy top to bottom
+    for (int i=0; i<Y_MAX_SIZE/2; i++)           // Mirror copy top to bottom
     {
-        for (int j=0; j<=X_MAX_SIZE; j++)
+        for (int j=0; j<X_MAX_SIZE; j++)
         {
-            chessBoard[Y_MAX_SIZE-i][j] = chessBoard[i][j];
+            chessBoard[Y_MAX_SIZE-i-1][j] = chessBoard[i][j];
         }
     }
 }
 void PrintMirrorLine(int n, int x)
 {
-    for (int i=n; i<=n; i++)
-    {
-        for (int j=0; j<=X_MAX_SIZE; j++)
+        for (int j=0; j<X_MAX_SIZE; j++)
         {
-            cout << "| " << char(chessBoard[i][j]-x) << " ";
+            cout << "| " << char(chessBoard[n][j]-x) << " ";
         }
-    }
 }
