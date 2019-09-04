@@ -7,7 +7,7 @@ using namespace std;
 void SortHist(int[], int[], int);
 void PrintHist(int[]);
 void MaxHeight(int[], int&);
-void InitScoreTab(string[], int, int);
+void PrintStar(int[], int);
 
 int main()
 {
@@ -19,7 +19,7 @@ int main()
 
     SortHist(nScores, nRanges, nSize);
     MaxHeight(nRanges, nMaxHist);
-    InitScoreTab(sScoreTab, nSize, nMaxHist);
+    PrintStar(nRanges, nMaxHist);
     PrintHist(nRanges);
 
     return 0;
@@ -69,20 +69,23 @@ void PrintHist(int r[])
 }
 void MaxHeight(int range[], int& m)
 {
-    for (int i=0; i<10; i++)
+    for (int i=0; i<=10; i++)
     {
         if (range[i]>m)
             m = range[i];
     }
-    cout << m;
 }
-void InitScoreTab(string sArr[], int x, int y)
+void PrintStar(int arr[], int n)
 {
-    for (int i=0; i<y; i++)
+    for (int i=n; i>0; i--)
     {
-        for (int j=0; j<x; j++)
+        for (int j=0; j<=10; j++)
         {
-           sArr[i][j] = "   ";
+            if (arr[j]>=i)
+                cout << "  * ";
+            else
+                cout << "    ";
         }
+        cout << endl;
     }
 }
