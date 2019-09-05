@@ -5,9 +5,9 @@
 using namespace std;
 
 void SortHist(int[], int[], int);
-void PrintHist(int[]);
 void MaxHeight(int[], int&);
-void PrintStar(int[], int);
+void PrintHist(int[], int);
+void PrintLegend();
 
 int main()
 {
@@ -19,8 +19,7 @@ int main()
 
     SortHist(nScores, nRanges, nSize);
     MaxHeight(nRanges, nMaxHist);
-    PrintStar(nRanges, nMaxHist);
-    PrintHist(nRanges);
+    PrintHist(nRanges, nMaxHist);
 
     return 0;
 }
@@ -30,42 +29,36 @@ void SortHist(int arr[], int range[], int s)
     {
         if(arr[i]>=0 && arr[i]<10)
             range[0] +=1;
-        else if(arr[i]>=10 && arr[i]<20)
+        if(arr[i]>=10 && arr[i]<20)
             range[1] +=1;
-        else if(arr[i]>=20 && arr[i]<30)
+        if(arr[i]>=20 && arr[i]<30)
             range[2] +=1;
-        else if(arr[i]>=30 && arr[i]<40)
+        if(arr[i]>=30 && arr[i]<40)
             range[3] +=1;
-        else if(arr[i]>=40 && arr[i]<50)
+        if(arr[i]>=40 && arr[i]<50)
             range[4] +=1;
-        else if(arr[i]>=50 && arr[i]<60)
+        if(arr[i]>=50 && arr[i]<60)
             range[5] +=1;
-        else if(arr[i]>=60 && arr[i]<70)
+        if(arr[i]>=60 && arr[i]<70)
             range[6] +=1;
-        else if(arr[i]>=70 && arr[i]<80)
+        if(arr[i]>=70 && arr[i]<80)
             range[7] +=1;
-        else if(arr[i]>=80 && arr[i]<90)
+        if(arr[i]>=80 && arr[i]<90)
             range[8] +=1;
-        else if(arr[i]>=90 && arr[i]<100)
+        if(arr[i]>=90 && arr[i]<100)
             range[9] +=1;
-        else if(arr[i]==100)
+        if(arr[i]==100)
             range[10] +=1;
     }
 }
-void PrintHist(int r[])
+void PrintLegend()
 {
-    cout << setw(4) << "0 ";
-    cout << setw(4) << "10 ";
-    cout << setw(4) << "20 ";
-    cout << setw(4) << "30 ";
-    cout << setw(4) << "40 ";
-    cout << setw(4) << "50 ";
-    cout << setw(4) << "60 ";
-    cout << setw(4) << "70 ";
-    cout << setw(4) << "80 ";
-    cout << setw(4) << "90 ";
-    cout << setw(5) << "100 ";
-    cout << endl;
+    cout << setw(3) << 0;
+    for (int i=10; i<100; i+=10)
+    {
+        cout << setw(4) << i;
+    }
+    cout << setw(5) << 100 << endl;
 }
 void MaxHeight(int range[], int& m)
 {
@@ -75,8 +68,9 @@ void MaxHeight(int range[], int& m)
             m = range[i];
     }
 }
-void PrintStar(int arr[], int n)
+void PrintHist(int arr[], int n)
 {
+    cout << endl;
     for (int i=n; i>0; i--)
     {
         for (int j=0; j<=10; j++)
@@ -88,4 +82,5 @@ void PrintStar(int arr[], int n)
         }
         cout << endl;
     }
+    PrintLegend();
 }
