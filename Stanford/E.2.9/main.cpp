@@ -4,33 +4,18 @@ using namespace std;
 
 const int X_MAX_SIZE = 8;
 const int Y_MAX_SIZE = 8;
-char chessBoard[Y_MAX_SIZE][X_MAX_SIZE] {'r','n','b','q','k','b','n','r'};
+char chessBoard[Y_MAX_SIZE][X_MAX_SIZE];
 
 void PrintXEdge();
 void PrintXLine();
-void PrintFirstLine();
-void PrintSecondLine();
-void PringMidLines();
-void MirrorArray();
-void PrintMirrorLine(int, int x=0);
+void PrintRows();
+void PrintSameDiag(int, int);
+void PrintOddDiag(int, int);
 
 int main()
 {
     PrintXEdge();
-    PrintFirstLine();
-    PrintXLine();
-    PrintSecondLine();
-    PrintXLine();
-    PringMidLines();
-    MirrorArray();
-    PrintMirrorLine(Y_MAX_SIZE-4);
-    PrintXLine();
-    PrintMirrorLine(Y_MAX_SIZE-3);
-    PrintXLine();
-    PrintMirrorLine(Y_MAX_SIZE-2, 32);
-    PrintXLine();
-    PrintMirrorLine(Y_MAX_SIZE-1, 32);
-    cout << "|" << endl;
+    PrintRows();
     PrintXEdge();
 
     return 0;
@@ -45,54 +30,54 @@ void PrintXEdge()
 }
 void PrintXLine()
 {
-    cout << "|" << endl;
+    cout << endl;
     for (int i=0; i<X_MAX_SIZE; i++)
     {
         cout << "|---";
     }
     cout << "|" << endl;
 }
-void PrintFirstLine()
+
+void PrintRows()
 {
-    for (int i=0; i<X_MAX_SIZE; i++)
+    for (int i=0; i<Y_MAX_SIZE; i++)
     {
-        cout << "| " << chessBoard[0][i] << " ";
-    }
-}
-void PrintSecondLine()
-{
-    for (int i=0; i<X_MAX_SIZE; i++)
-    {
-        chessBoard[1][i] = 'p';
-        cout << "| " << chessBoard[1][i] << " ";
-    }
-}
-void PringMidLines()
-{
-    for (int i=2; i<4; i++)
-    {
+        cout << "| " ;
+
         for (int j=0; j<X_MAX_SIZE; j++)
         {
-            chessBoard[i][j] = '-';
-            cout << "| " << chessBoard[i][j] << " ";
+            if (i%2==0 && j%2==0 || i&2!=0 && j%2!=0)
+                PrintSameDiag(i, j);
+            if (i%2==0 && j%2!=0 || i&2!=0 && j%2==0)
+                PrintOddDiag(i, j);
+            cout << " | ";
         }
-        PrintXLine();
+        if (i<Y_MAX_SIZE-1)
+            PrintXLine();
+        else
+            cout << endl;
     }
 }
-void MirrorArray()
+
+void PrintSameDiag(int i, int j)
 {
-    for (int i=0; i<Y_MAX_SIZE/2; i++)           // Mirror copy top to bottom
-    {
-        for (int j=0; j<X_MAX_SIZE; j++)
-        {
-            chessBoard[Y_MAX_SIZE-i-1][j] = chessBoard[i][j];
-        }
-    }
+    if (i>=0 && i<3)
+        chessBoard[i][j] = ' ';
+    if (i>2 && i<Y_MAX_SIZE-3)
+        chessBoard[i][j] = ' ';
+    if (i>=Y_MAX_SIZE-3 && i<Y_MAX_SIZE-1)
+        chessBoard[i][j] = ' ';
+
+    cout << chessBoard[i][j];
 }
-void PrintMirrorLine(int n, int x)
+void PrintOddDiag(int i, int j)
 {
-        for (int j=0; j<X_MAX_SIZE; j++)
-        {
-            cout << "| " << char(chessBoard[n][j]-x) << " ";
-        }
+    if (i>=0 && i<3)
+        chessBoard[i][j] = 'b';
+    if (i>2 && i<Y_MAX_SIZE-3)
+        chessBoard[i][j] = '-';
+    if (i>=Y_MAX_SIZE-3 && i<Y_MAX_SIZE)
+        chessBoard[i][j] = 'r';
+
+    cout << chessBoard[i][j];
 }
