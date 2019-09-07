@@ -3,7 +3,9 @@
 using namespace std;
 
 void askForElements(double [], int);
-void findLowHigh(int&, int&);
+void findLowHigh(double&, double&, double);
+
+double dLow, dHigh;
 
 int main()
 {
@@ -13,9 +15,7 @@ int main()
 
     askForElements(dArray, howMany);
 
-    cout << sizeof dArray;
-
-    delete [] dArray;
+    cout << "The range of values is " << dLow << "-" << dHigh << endl;
 
     return 0;
 }
@@ -30,6 +30,19 @@ void askForElements(double arr[], int nCount)
             arr[nCount-1] = dNum;
             cout << " ? ";
             cin >> dNum;
+            if (nCount == 0)
+                dLow = dNum;
+            if (dNum != -1)
+            {
+            findLowHigh(dLow, dHigh, dNum);
             nCount++;
+            }
         }
+}
+void findLowHigh(double& dLow, double& dHigh, double num)
+{
+    if (num>dHigh)
+        dHigh = num;
+    if (num<dHigh && num<dLow)
+        dLow = num;
 }
