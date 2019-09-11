@@ -16,6 +16,15 @@ int main()
     return 0;
 }
 
+/*
+Function: PigLatin
+Usage: translation = pigLatin(word);
+------------------------------------
+This function translates a word from English to Pig Latin using
+the rules specified in Chapter 3. The translated word is
+returned as the value of the function.
+*/
+
 string PigLatin(string word)
 {
     int vp = FindFirstVowel(word);
@@ -35,13 +44,22 @@ string PigLatin(string word)
     }
 }
 
+/*
+Function: FindFirstVowel
+Usage: k = FindFistVowel(word);
+-------------------------------
+This function returns the index position of the first vowel
+in word. If word does not contain a vowel, FindFirstVowel
+returns -1. The code for IsVowel appears in Chapter 1.
+*/
+
 int FindFirstVowel(string word)
 {
-    for (unsigned i=0; i < word.length(); i++)
+    for (int i=0; i < word.length(); i++)
     {
         if (isVowel(word[i])) return i;
     }
-return -1;
+    return -1;
 }
 
 bool isVowel(char ch)
