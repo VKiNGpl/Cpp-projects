@@ -1,53 +1,48 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 
 using namespace std;
 
-string PigLatin(string word);
-int FindFirstVowel(string word);
-bool isVowel(char word);
+#define T_SIZE 1001
+char* string_merge(char *, char *);
 
 int main()
 {
-    string sLine;
-    cin >> sLine;
-    cout << PigLatin(sLine);
+    int t,n;
+    char S1[T_SIZE], S2[T_SIZE], *S;
+    cin >> t; /* wczytaj liczbê testów */
+    cin.getline(S1,T_SIZE);
+
+    while(t)
+    {
+        cin.getline(S1,T_SIZE,' ');
+        cin.getline(S2,T_SIZE);
+        S=string_merge(S1,S2);
+        cout << S << endl;
+        delete[] S;
+        t--;
+    }
 
     return 0;
 }
 
-string PigLatin(string word)
+char* string_merge(char * s1, char *s2)
 {
-    int vp = FindFirstVowel(word);
-    if (vp == -1)
-    {
-        return word;
-    }
-    else if (vp == 0)
-    {
-        return word + "way";
-    }
-    else
-    {
-        string head = word.substr(0, vp);
-        string tail = word.substr(vp);
-        return tail + head + "ay";
-    }
-}
+    int sSize = 0;
 
-int FindFirstVowel(string word)
-{
-    for (unsigned i=0; i < word.length(); i++)
+    for (int i=0; (s1[i] != '\0') && (s2[i] != '\0'); i++)
     {
-        if (isVowel(word[i])) return i;
+        sSize += 1;
     }
-return -1;
-}
 
-bool isVowel(char ch)
-{
-    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-        return true;
-    else
-        return false;
+    char* chPtr = new char[sSize*2];
+
+    for (int i=0; i < sSize * 2; i++)
+    {
+        if (i%2 == 0) chPtr[i] = s1[i/2];
+        else chPtr[i] = s2[i/2];
+    }
+    chPtr[sSize*2] = '\0';
+
+    return chPtr;
 }
