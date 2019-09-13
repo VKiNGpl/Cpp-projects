@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1568336522 source:c:\users\kryst\documents\github\cpp-projects\stanford\e.3.2\main.cpp
+	<iostream>
+	<cstdlib>
+	<time.h>
+
