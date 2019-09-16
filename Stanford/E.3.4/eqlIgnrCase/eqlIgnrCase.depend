@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1568488128 source:c:\users\kryst\documents\github\cpp-projects\stanford\e.3.4\eqlignrcase\main.cpp
+	<iostream>
+	<string>
+	<algorithm>
+

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1564519870 source:c:\users\kryst\documents\github\cpp-projects\pasja informatyki\file reading\main.cpp
+1564526231 source:c:\users\kryst\documents\github\cpp-projects\pasja informatyki\file reading\main.cpp
 	<iostream>
 	<fstream>
 	<cstdlib>
