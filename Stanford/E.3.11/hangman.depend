@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1568753625 source:c:\users\kryst\documents\github\cpp-projects\stanford\e.3.11\main.cpp
+	<iostream>
+	"randword.h"
+
+1568753837 c:\users\kryst\documents\github\cpp-projects\stanford\e.3.11\randword.h
+
