@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569011510 source:c:\users\kryst\documents\github\cpp-projects\od zera do gier kodera\4.charcounter\main.cpp
+	<iostream>
+	<iostream>
+	<conio.h>
+
