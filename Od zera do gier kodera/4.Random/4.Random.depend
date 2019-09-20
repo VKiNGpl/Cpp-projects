@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1568948870 source:c:\users\kryst\documents\github\cpp-projects\od zera do gier kodera\4.random\main.cpp
+	<iostream>
+	<ctime>
+	<cstdlib>
+

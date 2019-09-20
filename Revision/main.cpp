@@ -1,48 +1,43 @@
 #include <iostream>
-#include <cstring>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-#define T_SIZE 1001
-char* string_merge(char *, char *);
+void randomize();
+double randD();
+double randAverage(int);
 
 int main()
 {
-    int t,n;
-    char S1[T_SIZE], S2[T_SIZE], *S;
-    cin >> t; /* wczytaj liczbê testów */
-    cin.getline(S1,T_SIZE);
+    int nHowMany;
 
-    while(t)
-    {
-        cin.getline(S1,T_SIZE,' ');
-        cin.getline(S2,T_SIZE);
-        S=string_merge(S1,S2);
-        cout << S << endl;
-        delete[] S;
-        t--;
-    }
+    randomize();
 
-    return 0;
+    cout << "Enter the number of random doubles to average: ";
+    cin >> nHowMany;
+
+    cout << randAverage(nHowMany) << endl;
 }
 
-char* string_merge(char * s1, char *s2)
+void randomize()
 {
-    int sSize = 0;
+    srand(time(NULL));
+}
 
-    for (int i=0; (s1[i] != '\0') && (s2[i] != '\0'); i++)
+double randD()
+{
+    rand();
+    return rand()%10+1;
+}
+
+double randAverage(int n)
+{
+    double nAverage = 0;
+    for (int i=0; i<n; i++)
     {
-        sSize += 1;
+        nAverage += randD();
     }
 
-    char* chPtr = new char[sSize*2];
-
-    for (int i=0; i < sSize * 2; i++)
-    {
-        if (i%2 == 0) chPtr[i] = s1[i/2];
-        else chPtr[i] = s2[i/2];
-    }
-    chPtr[sSize*2] = '\0';
-
-    return chPtr;
+    return nAverage/n;
 }

@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1568843560 source:c:\users\kryst\documents\github\cpp-projects\stanford\e.3.12\card.cpp
+1568856397 source:c:\users\kryst\documents\github\cpp-projects\stanford\e.3.12\card.cpp
+	"card.h"
 
-1568845578 source:c:\users\kryst\documents\github\cpp-projects\stanford\e.3.12\main.cpp
+1568849362 source:c:\users\kryst\documents\github\cpp-projects\stanford\e.3.12\main.cpp
 	<iostream>
 	"card.h"
 
-1568846156 c:\users\kryst\documents\github\cpp-projects\stanford\e.3.12\card.h
+1568851816 c:\users\kryst\documents\github\cpp-projects\stanford\e.3.12\card.h
+	<string>
 
