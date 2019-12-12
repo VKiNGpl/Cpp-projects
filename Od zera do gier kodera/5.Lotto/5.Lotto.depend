@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1575853749 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\5.lotto\main.cpp
+	<iostream>
+	<time.h>
+	<cstdlib>
+

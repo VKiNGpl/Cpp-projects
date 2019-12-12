@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1575941145 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\5.biorytm\main.cpp
+	<iostream>
+	<ctime>
+	<cmath>
+
