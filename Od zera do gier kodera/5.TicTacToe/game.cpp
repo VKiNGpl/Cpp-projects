@@ -1,11 +1,11 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 #include "game.h"
 
-FIELD g_aPlansza[3][3] = {{FLD_EMPTY, FLD_EMPTY, FLD_EMPTY},
-                          {FLD_EMPTY, FLD_EMPTY, FLD_EMPTY},
-                          {FLD_EMPTY, FLD_EMPTY, FLD_EMPTY}};
+
+FIELD g_aPlansza[GAME_SIZE][GAME_SIZE];
 GAMESTATE g_StanGry = GS_NOTSTARTED;
 SIGN g_AktualnyGracz;
 
@@ -13,6 +13,8 @@ bool StartGry()
 {
     if (g_StanGry != GS_NOTSTARTED)
         return false;
+
+    InicjujPlansze();
 
 // losujemy gracza, ktory bedzie zaczynal
     srand((int)time(NULL));
@@ -28,11 +30,11 @@ bool Ruch(unsigned uNumerPola)
 {
     if (g_StanGry != GS_MOVE)
         return false;
-    if (!(uNumerPola >= 1 && uNumerPola <= 9))
+    if (!(uNumerPola >= 1 && uNumerPola <= GAME_SIZE * GAME_SIZE))
         return false;
 
-    unsigned uY = (uNumerPola - 1) / 3;
-    unsigned uX = (uNumerPola - 1) % 3;
+    unsigned uY = (uNumerPola - 1) / GAME_SIZE;
+    unsigned uX = (uNumerPola - 1) % GAME_SIZE;
 
     if (g_aPlansza[uY][uX] == FLD_EMPTY);
     // wstaw znak aktualnego gracza w podanym polu
@@ -40,30 +42,59 @@ bool Ruch(unsigned uNumerPola)
         return false;
 
     g_aPlansza[uY][uX] = (FIELD)g_AktualnyGracz;
-
-    const int LINIE[][3][2] = {{{0,0}, {0,1}, {0,2}},    // gorna pozioma
-                               {{1,0}, {1,1}, {1,2}},    // srodkowa pozioma
-                               {{2,0}, {2,1}, {2,2}},    // dolna pozioma
-                               {{0,0}, {1,0}, {2,0}},    // lewa pionowa
-                               {{0,1}, {1,1}, {2,1}},    // srodkowa pionowa
-                               {{0,2}, {1,2}, {2,2}},    // prawa pionowa
-                               {{0,2}, {1,1}, {2,0}},    // prawa backslashowa
-                               {{0,0}, {1,1}, {2,2}}};   // prawa slashowa
+    int nLiczbaKombinacji = GAME_SIZE*2+2;
+    int LINIE[nLiczbaKombinacji][GAME_SIZE][2];
+    // poziome kombinacje
+    for (int i = 0; i < GAME_SIZE; i++)
+    {
+        for (int j = 0; j < GAME_SIZE; j++)
+        {
+                LINIE[i][j][0] = i;
+                LINIE[i][j][1] = j;
+        }
+    }
+    // pionowe kombinacje
+    for (int i = GAME_SIZE; i < GAME_SIZE*2; i++)
+    {
+        for (int j = 0; j < GAME_SIZE; j++)
+        {
+                LINIE[i][j][0] = j;
+                LINIE[i][j][1] = i - GAME_SIZE;
+        }
+    }
+    // prawa backslashowa
+    for (int i = GAME_SIZE*2; i < GAME_SIZE*2+1; i++)
+    {
+        for (int j = GAME_SIZE - 1; j >= 0; j--)
+        {
+                LINIE[i][j][0] = (GAME_SIZE - 1) - j;
+                LINIE[i][j][1] = j;
+        }
+    }
+    // prawa slashowa
+    for (int i = GAME_SIZE*2+1; i < GAME_SIZE*2+2; i++)
+    {
+        for (int j = 0; j < GAME_SIZE; j++)
+        {
+                LINIE[i][j][0] = j;
+                LINIE[i][j][1] = j;
+        }
+    }
 
     FIELD Pole, ZgodnePole;
     unsigned uLiczbaZgodnychPol, uLiczbaZapelnionychPol;
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < GAME_SIZE*2+2; i++)
     {
-        // i przebiega po kolejnych mozliwych liniach (jest ich osiem)
+        // i przebiega po kolejnych mozliwych liniach (jest ich GAME_SIZE*2+2)
 
         // zerujemy zmienne pomocnicze
         Pole = ZgodnePole = FLD_EMPTY;   // obie zmienne == FLD_EMPTY
         uLiczbaZgodnychPol = 0;
         uLiczbaZapelnionychPol = 0;
 
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < GAME_SIZE; j++)
         {
-            // j przebiega po trzech polach w kazdej linii
+            // j przebiega po GAME_SIZE polach w kazdej linii
 
             // pobieramy rzeczone pole
             // to zdecydowanie najbardziej pogmatwane wyrazenie
@@ -82,7 +113,7 @@ bool Ruch(unsigned uNumerPola)
                 uLiczbaZgodnychPol++;
         }
         // teraz sprawdzamy, czy udalo nam sie zgodzic linie
-        if (uLiczbaZgodnychPol == 3 && ZgodnePole != FLD_EMPTY)
+        if (uLiczbaZgodnychPol == GAME_SIZE && ZgodnePole != FLD_EMPTY)
         {
             // jezeli tak, no to ustawiamy stan gry na wygrana
             g_StanGry = GS_WON;
@@ -90,18 +121,18 @@ bool Ruch(unsigned uNumerPola)
             // przerywamy petle i funkcje
             return true;
         }
-        for (int i = 0; i < 3; i++)
+        }
+        for (int i = 0; i < GAME_SIZE; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < GAME_SIZE; j++)
                 if (g_aPlansza[i][j] != FLD_EMPTY)
                     uLiczbaZapelnionychPol++;
         }
 
-        if (uLiczbaZapelnionychPol == 3*3)
+        if (uLiczbaZapelnionychPol == GAME_SIZE*GAME_SIZE)
         {
             g_StanGry = GS_DRAW;
             return true;
-        }
     }
 
     g_AktualnyGracz = (g_AktualnyGracz == SGN_CIRCLE ? SGN_CROSS : SGN_CIRCLE);
@@ -115,31 +146,71 @@ bool RysujPlansze()
 
     system("cls");
 
-    std::cout << "   KOLKO I KRZYZYK   " << std::endl;
-    std::cout << "---------------------" << std::endl;
+    for (int i = 0; i < GAME_SIZE*5/2-7; i++)
+        {
+            std::cout << " ";
+        }
+    std::cout << "KOLKO I KRZYZYK" << std::endl;
+    for (int i = 0; i < GAME_SIZE*5+1; i++)
+    {
+    std::cout << "-";
+    }
     std::cout << std::endl;
 
-    std::cout << "        -----" << std::endl;
-    for (int i = 0; i < 3; i++)
-    {
-        // lewa czesc ramki
-        std::cout << "        |";
 
+    for (int i = 0; i < GAME_SIZE; i++)
+    {
+        // lewy odstep
+        for (int j = 0; j < GAME_SIZE; j++)
+        {
+            std::cout << " ";
+        }
+        // gorna ramka
+        if (i == 0)
+            std::cout << "-";
+        else
+            std::cout << "|";
+        // pozioma ramka
+        for (int j = 0; j < GAME_SIZE; j++)
+        {
+            if (i == 0)
+                std::cout << "---";
+            else
+                std::cout << "--|";
+        }
+        std::cout << std::endl;
         // wiersz
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < GAME_SIZE; j++)
+        {
+            std::cout << " ";
+        }
+        std::cout << "|";
+        for (int j = 0; j < GAME_SIZE; j++)
         {
             if (g_aPlansza[i][j] == FLD_EMPTY)
                 // numer pola
-                std::cout << i * 3 + j + 1;
+                std::cout << std::setw(2) << i * GAME_SIZE + j + 1 << "|";
             else
                 // kolko lub krzyzyk
-                std::cout << (char)g_aPlansza[i][j];
+                std::cout << std::setw(2) << (char)g_aPlansza[i][j] << "|";
         }
 
-        // prawa czesc ramki
-        std::cout << "|" << std::endl;
+        if (i == GAME_SIZE - 1)
+        {
+            std::cout << std::endl;
+            for (int j = 0; j < GAME_SIZE; j++)
+            {
+                std::cout << " ";
+            }
+            for (int j = 0; j < GAME_SIZE; j++)
+            {
+                std::cout << "---";
+            }
+            std::cout << "-" << std::endl;
+        }
+        std::cout << std::endl;
     }
-    std::cout << "        -----" << std::endl;
+
     std::cout << std::endl;
 
     switch (g_StanGry)
@@ -147,7 +218,7 @@ bool RysujPlansze()
     case GS_MOVE:
         // prosba o nastepny ruch
         std::cout << "Podaj numer pola, w ktorym" << std::endl;
-        std::cout << "chces postawic ";
+        std::cout << "chcesz postawic ";
         std::cout << (g_AktualnyGracz == SGN_CIRCLE ?
                       "kolko" : "krzyzyk") << ": ";
         break;
@@ -161,6 +232,20 @@ bool RysujPlansze()
         // informacja o remisie
         std::cout << "Remis!";
         break;
+    }
+    return true;
+}
+
+bool InicjujPlansze()
+{
+    if (g_StanGry != GS_NOTSTARTED)
+        return false;
+    for (int i = 0; i < GAME_SIZE; i++)
+    {
+        for (int j = 0; j < GAME_SIZE; j++)
+        {
+            g_aPlansza[i][j] = FLD_EMPTY;
+        }
     }
 
     return true;

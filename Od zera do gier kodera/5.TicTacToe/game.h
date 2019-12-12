@@ -1,6 +1,7 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
+const int GAME_SIZE = 9;
 enum SIGN {SGN_CIRCLE = 'O',
            SGN_CROSS  = 'X'  };
 enum FIELD {FLD_EMPTY,
@@ -20,5 +21,8 @@ bool Ruch(unsigned);
 
 // rysowanie planszy
 bool RysujPlansze();
+
+// inicjalizacja planszy
+bool InicjujPlansze();
 
 #endif // GAME_H_INCLUDED
