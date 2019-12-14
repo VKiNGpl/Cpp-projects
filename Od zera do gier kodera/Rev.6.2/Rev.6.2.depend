@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1576295314 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\rev.6.2\main.cpp
+	<iostream>
+	<cstdlib>
+	<iomanip>
+	"unicalc.h"
+
+1576294450 c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\rev.6.2\unicalc.h
+
+1576295123 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\rev.6.2\unicalc.cpp
+	<iostream>
+	"unicalc.h"
+

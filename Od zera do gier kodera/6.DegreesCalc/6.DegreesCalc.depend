@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1576189953 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\6.degreescalc\main.cpp
+	<iostream>
+	<cstdlib>
+	"calc.h"
+
+1576189934 c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\6.degreescalc\calc.h
+
+1576191265 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\6.degreescalc\calc.cpp
+	"calc.h"
+
