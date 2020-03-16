@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1578699972 source:c:\users\dom\documents\github\cpp-projects\c++ primer plus\e.5.2\main.cpp
+	<iostream>
+	<array>
+	<iomanip>
+

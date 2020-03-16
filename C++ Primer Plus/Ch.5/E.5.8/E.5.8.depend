@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1581312548 source:c:\users\dom\documents\github\cpp-projects\c++ primer plus\e.5.8\main.cpp
+	<iostream>
+	<cstring>
+

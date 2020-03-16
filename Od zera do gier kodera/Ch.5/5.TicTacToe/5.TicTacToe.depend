@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1576131859 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\5.tictactoe\game.cpp
+	<iostream>
+	<ctime>
+	<cstdlib>
+	<iomanip>
+	"game.h"
+
+1576112446 source:c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\5.tictactoe\main.cpp
+	<iostream>
+	<conio.h>
+	"game.h"
+
+1576184757 c:\users\dom\documents\github\cpp-projects\od zera do gier kodera\5.tictactoe\game.h
+

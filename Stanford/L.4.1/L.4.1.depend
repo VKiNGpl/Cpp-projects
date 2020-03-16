@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1576298696 source:c:\users\dom\documents\github\cpp-projects\stanford\l.4.1\main.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<string>
+
